@@ -1,13 +1,12 @@
 int Triac_Pin = 3;
-int SND_Pin = 6;
-int gezaehlt = 0;
+int interrupt = 9;
 int Taster_1 = 0; // Hochsetzen
 int Taster_2 = 1; // Runtersetzen
 int delay = 294;
 
 void setup() {
   pinMode(Triac_Pin, OUTPUT);
-  pinMode(SND_Pin, INPUT);
+  attachInterrupt(digitalPintoInterrupt(interrupt), zuenden, RISING);
   pinMode(Taster_1, INPUT);
   pinMode(Taster_2, INPUT);
 }
@@ -31,18 +30,11 @@ void loop() {
     {
       delay = 294;
     }
-  }
-  if(!digitalRead(SND_Pin) && !gezaehlt)
-  {
-    gezaehlt = 1;
-  }
-  if (digitalRead(SND_Pin) && gezaehlt)
-  {
-    gezaehlt = 0;
-
+}
+void zuenden()
+{
     delayMicroseconds(delay); //MinimalerZündzeitpunkt
     digitalWrite(Triac_Pin, HIGH);
     delayMicroseconds(10);
     digitalWrite(Triac_Pin, LOW);
-  }
 }
