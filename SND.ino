@@ -23,10 +23,12 @@ void loop() {
     {
       zaehler = 0;
       an = 1;
+      delayMicroseconds(10);
       digitalWrite(Triac_Pin, LOW);
     }
     else if((zaehler >= 50) && an)
     {
+    delayMicroseconds(10);
       digitalWrite(Triac_Pin, HIGH);
       an = 0;
     }
