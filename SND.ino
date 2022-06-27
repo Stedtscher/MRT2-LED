@@ -16,7 +16,7 @@ void loop() {
       zaehler = 0;
       digitalWrite(ledPin, LOW);
     }
-    if(zaehler >= 50)
+    else if(zaehler >= 50)
     {
       digitalWrite(ledPin, HIGH);
     }
