@@ -27,9 +27,9 @@ void loop() {
   {
     loopzaehler = 0;
     verzoegerung = verzoegerung - 10;
-    if(verzoegerung <= 1000)
+    if(verzoegerung <= 100)
     {
-      verzoegerung = 1000;
+      verzoegerung = 100;
     }
 }
 void zuenden()
