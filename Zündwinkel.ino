@@ -16,6 +16,7 @@ void loop() {
 
   if (digitalRead(Taster_1))
   {
+    delay(333);
     delay = delay + 1000;
     if(delay >= 9500)
     {
@@ -24,6 +25,7 @@ void loop() {
   }
   if (digitalRead(Taster_2))
   {
+    delay(333);
     delay = delay - 1000;
     if(delay <= 294)
     {
