@@ -1,0 +1,5 @@
+{
+    "board": "Infineon:arm:XMC1100_XMC2GO",
+    "port": "COM7",
+    "sketch": "Interrupt.ino"
+}
