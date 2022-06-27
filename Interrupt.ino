@@ -20,9 +20,9 @@ void loop() {
     loopzaehler = 0;
     verzoegerung = verzoegerung + 10;
   }
-  if(verzoegerung >= 8650)
+  if(verzoegerung >= 7750)
   {
-      verzoegerung = 8650;
+      verzoegerung = 7750;
   }
   if (digitalRead(Taster_2) && (loopzaehler >= 100 ))
   {
