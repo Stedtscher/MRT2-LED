@@ -4,6 +4,7 @@ int Taster_1 = 0; // Hochsetzen
 int Taster_2 = 1; // Runtersetzen
 int verzoegerung = 5000;
 int loopzaehler = 0;
+int blinker = 0;
 
 void setup() {
   pinMode(Triac_Pin, OUTPUT);
@@ -36,8 +37,15 @@ void loop() {
 
 void zuenden()
 {
+  blinker ++;
   delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
   digitalWrite(Triac_Pin, HIGH);
   delayMicroseconds(10);
   digitalWrite(Triac_Pin, LOW);
+  if(blinker >= 100){
+    digitalWrite(Triac_Pin, LOW);
+    delayMicroseconds(1000000);
+    blinker = 0;
+  }
+
 }
