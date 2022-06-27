@@ -1,11 +1,11 @@
-int ledPin = 14;
+int Triac_Pin = 3;
 int SND_Pin = 6;
 int zaehler = 0;
 int an = 1;
 int gezaehlt = 0;
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  pinMode(Triac_Pin, OUTPUT);
   pinMode(SND_Pin, INPUT);
 }
 
@@ -23,14 +23,12 @@ void loop() {
     {
       zaehler = 0;
       an = 1;
-      digitalWrite(ledPin, LOW);
+      digitalWrite(Triac_Pin, LOW);
     }
     else if((zaehler >= 50) && an)
     {
-      digitalWrite(ledPin, HIGH);
+      digitalWrite(Triac_Pin, HIGH);
       an = 0;
     }
   }
-
-  digitalWrite(ledPin, HIGH);
 }
