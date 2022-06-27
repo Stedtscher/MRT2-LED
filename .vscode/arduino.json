@@ -1,0 +1,4 @@
+{
+    "configuration": "UART=debug,LIB=NONE",
+    "board": "Infineon:arm:XMC1100_XMC2GO"
+}
