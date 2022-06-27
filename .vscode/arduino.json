@@ -1,5 +1,6 @@
 {
     "configuration": "UART=debug,LIB=NONE",
     "board": "Infineon:arm:XMC1100_XMC2GO",
-    "port": "COM7"
+    "port": "COM7",
+    "sketch": "Taster_LED.ino"
 }
