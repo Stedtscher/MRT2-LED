@@ -7,23 +7,23 @@ int loopzaehler = 0;
 
 void setup() {
   pinMode(Triac_Pin, OUTPUT);
-  attachInterrupt(digitalPintoInterrupt(interrupt), zuenden, RISING);
+  attachInterrupt(digitalPinToInterrupt(interrupt), zuenden, RISING);
   pinMode(Taster_1, INPUT);
   pinMode(Taster_2, INPUT);
 }
 
 void loop() {
-
-  if (digitalRead(Taster_1))
+  loopzaehler++;
+  if (digitalRead(Taster_1) && (loopzaehler >= 100 ))
   {
     loopzaehler = 0;
     verzoegerung = verzoegerung + 10;
-    if(verzoegerung >= 9500)
+    if(verzoegerung >= 9000)
     {
-      verzoegerung = 9500;
+      verzoegerung = 9000;
     }
   }
-  if (digitalRead(Taster_2))
+  if (digitalRead(Taster_2) && (loopzaehler >= 100 ))
   {
     loopzaehler = 0;
     verzoegerung = verzoegerung - 10;
@@ -31,11 +31,13 @@ void loop() {
     {
       verzoegerung = 100;
     }
+  }
 }
+
 void zuenden()
 {
-    delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
-    digitalWrite(Triac_Pin, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(Triac_Pin, LOW);
+  delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
+  digitalWrite(Triac_Pin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(Triac_Pin, LOW);
 }
