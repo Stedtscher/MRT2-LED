@@ -16,7 +16,7 @@ void loop() {
   if (digitalRead(SND_Pin) && gezaehlt)
   {
     gezaehlt = 0;
-    delayMicroseconds(294);
+    delayMicroseconds(294); //MinimalerZündzeitpunkt
     digitalWrite(Triac_Pin, HIGH);
     delayMicroseconds(10);
     digitalWrite(Triac_Pin, LOW);
