@@ -18,7 +18,7 @@ void loop() {
   {
    delay(333);
    verzoegerung = verzoegerung + 1000;
-    if verzoegerung >= 9500)
+    if (verzoegerung >= 9500)
     {
      verzoegerung = 9500;
     }
@@ -27,7 +27,7 @@ void loop() {
   {
    delay(333);
    verzoegerung = verzoegerung - 1000;
-    if verzoegerung <= 294)
+    if (verzoegerung <= 294)
     {
      verzoegerung = 294;
     }
@@ -40,7 +40,7 @@ void loop() {
   {
     gezaehlt = 0;
 
-   delayMicroseconds verzoegerung); //MinimalerZündzeitpunkt
+   delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
     digitalWrite(Triac_Pin, HIGH);
    delayMicroseconds(10);
     digitalWrite(Triac_Pin, LOW);
