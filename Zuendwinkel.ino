@@ -3,7 +3,8 @@ int SND_Pin = 6;
 int gezaehlt = 0;
 int Taster_1 = 0; // Hochsetzen
 int Taster_2 = 1; // Runtersetzen
-int verzoegerung = 294;
+int verzoegerung = 5000;
+int loopzaehler = 0;
 
 void setup() {
   pinMode(Triac_Pin, OUTPUT);
@@ -14,22 +15,23 @@ void setup() {
 
 void loop() {
 
-  if (digitalRead(Taster_1))
+  loopzaehler++;
+  if (digitalRead(Taster_1) && (loopzaehler >= 100))
   {
-   delay(333);
-   verzoegerung = verzoegerung + 1000;
+   loopzaehler = 0;
+   verzoegerung = verzoegerung + 10;
     if (verzoegerung >= 9500)
     {
      verzoegerung = 9500;
     }
   }
-  if (digitalRead(Taster_2))
+  if (digitalRead(Taster_2) && (loopzaehler >= 100))
   {
-   delay(333);
-   verzoegerung = verzoegerung - 1000;
-    if (verzoegerung <= 294)
+   loopzaehler = 0;
+   verzoegerung = verzoegerung - 10;
+    if (verzoegerung <= 100)
     {
-     verzoegerung = 294;
+     verzoegerung = 1000;
     }
   }
   if(!digitalRead(SND_Pin) && !gezaehlt)
@@ -40,9 +42,10 @@ void loop() {
   {
     gezaehlt = 0;
 
-   delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
+    delayMicroseconds(verzoegerung); //MinimalerZündzeitpunkt
     digitalWrite(Triac_Pin, HIGH);
-   delayMicroseconds(10);
+    delayMicroseconds(10);
     digitalWrite(Triac_Pin, LOW);
+
   }
 }
